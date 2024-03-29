@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+   <h1>Employee Affectation</h1>
+
+   <h:form>
+      <h:outputLabel for="employeeSelect" value="Select Employee: " />
+      <h:selectOneMenu id="employeeSelect" value="#{employeeBean.selectedEmployee}">
+         <f:selectItems value="#{employeeBean.employeeList}" var="employee"
+                        itemLabel="#{employee.name}" itemValue="#{employee}" />
+      </h:selectOneMenu>
+
+      <br />
+
+      <h:outputLabel for="projectSelect" value="Select Project: " />
+      <h:selectOneMenu id="projectSelect" value="#{employeeBean.selectedProject}">
+         <f:selectItem itemValue="" itemLabel="-- Select Project --" />
+         <f:selectItems value="#{employeeBean.availableProjects}" var="project"
+                        itemLabel="#{project.name}" itemValue="#{project}" />
+      </h:selectOneMenu>
+
+
+      <h:outputLabel for="percentage" value="Implication " />
+      <h:selectOneMenu id="percentage" value="#{employeeBean.selectedPercentage}">
+         <f:selectItem itemValue="10" itemLabel="10%" />
+         <f:selectItem itemValue="20" itemLabel="20%" />
+         <f:selectItem itemValue="30" itemLabel="30%" />
+         <!-- Ajoutez d'autres options au besoin -->
+      </h:selectOneMenu>
+      <br />
+
+      <h:commandButton value="Assign Project" action="#{employeeBean.assignProject}" />
+   </h:form>
+</f:view>
+</html>
